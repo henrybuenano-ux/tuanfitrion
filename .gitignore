@@ -1,0 +1,7 @@
+# Local credentials — never commit these
+.ghl/
+.env
+
+# Python
+__pycache__/
+*.pyc
