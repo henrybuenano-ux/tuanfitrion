@@ -30,5 +30,8 @@ Thumbs.db
 *.log
 output/
 
+# Local GHL config backups (client data — never commit)
+backups/
+
 # OMC orchestration state (not part of the CLI)
 .omc/
