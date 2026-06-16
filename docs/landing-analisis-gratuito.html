@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Análisis gratuito de Revenue — tuAnfitrión Performance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0c1c3b; --navy2:#0a1730; --blue:#2a63bf; --blue-lite:#2f74d0;
+    --orange:#F2911E; --ink:#26303f; --muted:#5d6b80; --soft:#f4f6fb; --line:#e6e9f0;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Poppins',-apple-system,Arial,sans-serif;color:var(--ink);line-height:1.7;background:#fff;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;font-weight:700;line-height:1.15}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+  a{color:inherit}
+  .btn{display:inline-block;background:var(--navy);color:#fff !important;text-decoration:none;font-weight:600;font-size:15px;padding:14px 26px;border-radius:8px;transition:.15s;border:none;cursor:pointer}
+  .btn:hover{background:#13294f;transform:translateY(-1px)}
+  .btn-orange{background:var(--orange)} .btn-orange:hover{background:#d97f12}
+  /* NAV */
+  .nav{position:absolute;top:0;left:0;right:0;z-index:5}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:28px}
+  .logo{font-family:'Playfair Display',serif;font-weight:800;font-size:26px;color:#fff;letter-spacing:.5px}
+  .logo b{color:var(--orange)}
+  .logo-img{height:40px;width:auto;display:block}
+  /* HERO */
+  .hero{position:relative;background:linear-gradient(163deg,#2a5599 0%,#15346a 45%,#0b1b39 100%);color:#fff;padding:120px 0 90px;overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center}
+  .eyebrow{text-transform:uppercase;letter-spacing:.14em;font-size:13px;font-weight:600;color:#bcd0f0;margin-bottom:18px}
+  .hero h1{font-size:clamp(38px,5.4vw,60px);color:#fff;margin-bottom:18px}
+  .hero p.sub{font-size:18px;color:#d6e0f2;font-weight:300;max-width:520px;margin-bottom:26px}
+  .feat{list-style:none;display:grid;gap:16px;max-width:540px}
+  .feat li{position:relative;padding-left:38px;font-size:15.5px;color:#e7eefb;font-weight:300}
+  .feat li b{font-weight:600;color:#fff}
+  .feat li:before{content:"✓";position:absolute;left:0;top:1px;width:24px;height:24px;background:var(--orange);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;font-family:'Poppins'}
+  /* FORM CARD */
+  .formcard{background:#fff;border-radius:16px;box-shadow:0 30px 70px rgba(4,12,30,.45);padding:10px;min-height:640px}
+  .formcard .head{padding:18px 20px 6px;text-align:center}
+  .formcard .head h3{font-size:20px;color:var(--navy)}
+  .formcard .head small{color:var(--muted);font-size:13px;font-family:'Poppins'}
+  .formcard iframe{display:block;width:100%;min-height:600px;border:none;border-radius:8px}
+  /* SECTIONS */
+  section{padding:84px 0}
+  .ctx-grid{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}
+  .ctx img{width:100%;border-radius:14px;box-shadow:0 18px 44px rgba(12,28,59,.16);display:block}
+  h2.title{font-size:clamp(28px,3.6vw,40px);color:var(--navy);margin-bottom:18px}
+  .lead{font-size:17px;color:var(--muted);font-weight:300}
+  .kick{color:var(--orange);font-weight:600;text-transform:uppercase;letter-spacing:.12em;font-size:13px;margin-bottom:14px;font-family:'Poppins'}
+  /* IMPACT BOX (royal blue, estilo "Detalles del Webinar") */
+  .impact{background:linear-gradient(135deg,var(--blue-lite),var(--blue));color:#fff;border-radius:18px;padding:54px 40px;text-align:center;box-shadow:0 22px 50px rgba(20,52,106,.3)}
+  .impact h2{color:#fff;font-size:clamp(26px,3.4vw,36px);margin-bottom:26px}
+  .impact .row{display:flex;justify-content:center;align-items:center;gap:26px;flex-wrap:wrap;margin-bottom:18px}
+  .impact .num{font-family:'Playfair Display',serif;font-size:40px;font-weight:800;line-height:1}
+  .impact .arrow{font-size:30px;color:#cfe0ff}
+  .impact .hl{color:#ffd9a6}
+  .impact small{display:block;text-transform:uppercase;letter-spacing:.1em;font-size:12px;color:#cfe0ff;margin-top:8px;font-family:'Poppins'}
+  .impact .note{color:#e4eeff;font-weight:300;max-width:640px;margin:6px auto 0}
+  .pill{display:inline-block;margin-top:20px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:9px 18px;font-size:13.5px;font-family:'Poppins'}
+  /* CARDS qué hacemos */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:36px}
+  .card{background:var(--soft);border:1px solid var(--line);border-radius:14px;padding:24px}
+  .card .n{display:inline-flex;width:34px;height:34px;border-radius:9px;background:var(--navy);color:#fff;align-items:center;justify-content:center;font-weight:600;margin-bottom:12px;font-family:'Poppins'}
+  .card h3{font-family:'Poppins';font-weight:600;font-size:16.5px;color:var(--navy);margin-bottom:6px}
+  .card p{color:var(--muted);font-size:14.5px;font-weight:300}
+  /* CTA final */
+  .final{background:var(--navy);color:#fff}
+  .final .grid{display:grid;grid-template-columns:1fr .9fr;gap:50px;align-items:center}
+  .final h2{color:#fff;font-size:clamp(28px,3.6vw,40px);margin-bottom:16px}
+  .final p{color:#cdd9ef;font-weight:300}
+  .final .formcard{min-height:660px}
+  footer{background:var(--navy2);color:#8ea0bf;text-align:center;padding:30px;font-size:13px;font-weight:300}
+  @media(max-width:880px){
+    .hero-grid,.ctx-grid,.final .grid{grid-template-columns:1fr;gap:34px}
+    .cards{grid-template-columns:1fr}
+    .hero{padding:104px 0 64px} section{padding:60px 0}
+  }
+</style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <div class="nav"><div class="wrap">
+    <a href="#" style="display:inline-block"><img class="logo-img" src="https://assets.cdn.filesafe.space/KwoLkmWJqTELiyXCqJ4f/media/6900d93c8cb98a88b5e41ca5.png" alt="tuAnfitrión"></a>
+    <a class="btn btn-orange" href="https://api.leadconnectorhq.com/widget/booking/ymfy3UFugcbhOzwHeeV3" target="_blank" rel="noopener">Solicitar análisis gratuito</a>
+  </div></div>
+
+  <!-- HERO -->
+  <header class="hero"><div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">Revenue Management para apartamentos turísticos</div>
+        <h1>Tu apartamento,<br>un activo más rentable</h1>
+        <p class="sub">Incrementamos la facturación de tu apartamento con una estrategia profesional de precios, ocupación y posicionamiento — sin que cambies de gestor.</p>
+        <ul class="feat">
+          <li><b>Análisis gratuito y sin compromiso:</b> revisamos tu precio frente al mercado, tu ocupación potencial y tu margen real de mejora.</li>
+          <li><b>Modelo a resultados:</b> trabajamos con un fee variable sobre la facturación (7–10%), sin costes fijos. Solo ganamos si tú ganas más.</li>
+          <li><b>Conocimiento hiperlocal:</b> estrategia real basada en datos de tu zona, no automatización genérica.</li>
+        </ul>
+      </div>
+      <!-- FORM CARD (hero) -->
+      <div class="formcard" id="solicitar">
+        <div class="head"><h3>Solicita tu análisis gratuito</h3><small>Te decimos cuánto podría facturar realmente tu apartamento</small></div>
+        <iframe
+            src="https://api.leadconnectorhq.com/widget/form/7zx3TaixjOssL0DWr6VK"
+            style="width:100%;height:100%;border:none;border-radius:8px"
+            id="inline-7zx3TaixjOssL0DWr6VK"
+            data-layout="{'id':'INLINE'}"
+            data-trigger-type="alwaysShow"
+            data-trigger-value=""
+            data-activation-type="alwaysActivated"
+            data-activation-value=""
+            data-deactivation-type="neverDeactivate"
+            data-deactivation-value=""
+            data-form-name="Solicitud Análisis Gratuito — tuAnfitrión"
+            data-height="596"
+            data-layout-iframe-id="inline-7zx3TaixjOssL0DWr6VK"
+            data-form-id="7zx3TaixjOssL0DWr6VK"
+            title="Solicitud Análisis Gratuito — tuAnfitrión">
+        </iframe>
+      </div>
+    </div>
+  </div></header>
+
+  <!-- CONTEXTO + DOLOR -->
+  <section><div class="wrap">
+    <div class="ctx-grid ctx">
+      <img src="https://assets.cdn.filesafe.space/KwoLkmWJqTELiyXCqJ4f/media/693a7eb7169a4239063f7a64.webp" alt="Gestión de alquiler turístico">
+      <div>
+        <div class="kick">¿Está rindiendo lo que debería?</div>
+        <h2 class="title">¿Tu apartamento está facturando todo lo que podría?</h2>
+        <p class="lead">Muchos apartamentos turísticos pierden ingresos cada año por precios mal ajustados según temporada, falta de estrategia en eventos y puentes, baja ocupación en meses clave, mala posición frente a la competencia y reviews que frenan la conversión.</p>
+        <p class="lead" style="margin-top:14px;color:var(--ink)"><strong>Una pequeña mejora en precio, ocupación o posicionamiento puede suponer miles de euros más al año.</strong></p>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- IMPACTO (royal blue box) -->
+  <section style="padding-top:0"><div class="wrap">
+    <div class="impact">
+      <h2>Ejemplo de impacto real</h2>
+      <div class="row">
+        <div><div class="num">55.000 €</div><small>Facturación actual</small></div>
+        <div class="arrow">→</div>
+        <div><div class="num">64.900 €</div><small>Tras optimización</small></div>
+        <div class="arrow">=</div>
+        <div><div class="num hl">+9.900 €</div><small>al año</small></div>
+      </div>
+      <p class="note">Mejora estimada del 18% solo con estrategia de pricing y posicionamiento. Sin reformas.</p>
+      <span class="pill">Modelo a resultados · fee 7–10% · sin costes fijos · solo ganamos si tú ganas más</span>
+    </div>
+  </div></section>
+
+  <!-- QUÉ HACEMOS -->
+  <section style="padding-top:0"><div class="wrap">
+    <div style="text-align:center;max-width:640px;margin:0 auto">
+      <div class="kick">Nuestro método</div>
+      <h2 class="title">Qué hacemos por ti</h2>
+    </div>
+    <div class="cards">
+      <div class="card"><span class="n">1</span><h3>Análisis inicial gratuito</h3><p>Ubicación, precios, ocupación estimada, competencia y oportunidades.</p></div>
+      <div class="card"><span class="n">2</span><h3>Benchmark competitivo</h3><p>Te comparamos con apartamentos similares de tu zona.</p></div>
+      <div class="card"><span class="n">3</span><h3>Precios dinámicos</h3><p>Ajuste por demanda, temporada, eventos y antelación de reserva.</p></div>
+      <div class="card"><span class="n">4</span><h3>Optimización de ocupación</h3><p>Mejoramos meses valle y evitamos noches vacías.</p></div>
+      <div class="card"><span class="n">5</span><h3>Mejora de posicionamiento</h3><p>Reviews, fotos, descripción, tarifas y conversión.</p></div>
+      <div class="card"><span class="n">6</span><h3>Seguimiento mensual</h3><p>Informe periódico de ingresos, ocupación y oportunidades.</p></div>
+    </div>
+  </div></section>
+
+  <!-- CTA FINAL con form -->
+  <section class="final"><div class="wrap">
+    <div class="grid">
+      <div>
+        <h2>Descubre cuánto podría facturar realmente tu apartamento</h2>
+        <p>Análisis gratuito y sin compromiso. Rellena tus datos y te preparamos una valoración con tu precio frente a la competencia, tu ocupación potencial y una simulación real de mejora de ingresos.</p>
+        <p style="margin-top:16px;font-size:13px;color:#9fb0d0">Servicio de análisis limitado — priorizamos por orden de solicitud.</p>
+      </div>
+      <div class="formcard">
+        <div class="head"><h3>Solicita tu análisis gratuito</h3></div>
+        <iframe
+            src="https://api.leadconnectorhq.com/widget/form/7zx3TaixjOssL0DWr6VK?ref=footer"
+            style="width:100%;height:100%;border:none;border-radius:8px"
+            id="inline-7zx3TaixjOssL0DWr6VK-2"
+            data-layout="{'id':'INLINE'}"
+            data-trigger-type="alwaysShow"
+            data-activation-type="alwaysActivated"
+            data-deactivation-type="neverDeactivate"
+            data-form-name="Solicitud Análisis Gratuito — tuAnfitrión"
+            data-height="596"
+            data-layout-iframe-id="inline-7zx3TaixjOssL0DWr6VK-2"
+            data-form-id="7zx3TaixjOssL0DWr6VK"
+            title="Solicitud Análisis Gratuito — tuAnfitrión">
+        </iframe>
+      </div>
+    </div>
+  </div></section>
+
+  <footer>© tuAnfitrión Performance · Revenue Management para apartamentos turísticos</footer>
+
+  <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+</body>
+</html>
